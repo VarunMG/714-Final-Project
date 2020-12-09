@@ -1,0 +1,31 @@
+function [tVals,xVals,u] = spectral_KdV(N,T)
+%Make N a power of 2 or worst case EVEN
+%solves on [-pi,pi]
+dx = 1/(N-1);
+dt = 0.1/(N^2);
+tVals = 0:dt:T;
+xVals = linspace(-10,10,N);
+[~,tIters] = size(tVals);
+
+%initial data
+A=20;
+u0 =  @(x) 1/2*A*(sech(sqrt(A)/2*(x+8))).^2;
+
+
+u = zeros(N,tIters);
+u(:,1) = u0(xVals);
+uHat = zeros(N,tIters);
+uHat(:,1) = fft(u(:,1));
+
+dk = 2*pi/(N*dx);
+k = [0:dk:N/2*dk,-(N/2-1)*dk:dk:-dk];
+ik3 = 1i*k.^3;
+
+for n=2:tIters
+    t = dt*(n-1);
+    uHat(:,n) = uHat(:,n-1) + dt*-1i*k.'.*exp(-ik3*t).'.*fft((ifft(exp(ik3*t).*uHat(:,n-1))).^2);
+    u(:,n) = ifft(exp(ik3*t).*uHat(:,n));
+    plot(xVals,u(:,n));
+    pause(0.1);
+end
+end
