@@ -74,22 +74,22 @@ legend('Spectral Lie','Spectral Strang','Spectral SWSS')
 title(' log(error) vs. log(N)')
 xlabel('log(N)');
 ylabel('log(error)')
-
-disp('log(N) vs log(error) linear fit')
-polyfit(log(nVals),log(errs),1)
-
-figure;
-plot(log(nVals),log(massDiffs))
-title('log of Mass Variation vs. log(N)')
-xlabel('log(N)')
-ylabel('log(Mass Variation)')
-disp('log(Mass Variation) vs. log(N) linear fit')
-polyfit(log(nVals),log(massDiffs),1)
-
-figure;
-plot(log(nVals),log(momentumDiffs))
-title('log(Momentum Variation) vs. log(N)')
-xlabel('log(N)')
-ylabel('log(Momentum Variation)')
-disp('log(Momentum Variation) vs. log(N) linear fit')
-polyfit(log(nVals),log(momentumDiffs),1)
+% 
+% disp('log(N) vs log(error) linear fit')
+% polyfit(log(nVals),log(errs),1)
+% 
+% figure;
+% plot(log(nVals),log(massDiffs))
+% title('log of Mass Variation vs. log(N)')
+% xlabel('log(N)')
+% ylabel('log(Mass Variation)')
+% disp('log(Mass Variation) vs. log(N) linear fit')
+% polyfit(log(nVals),log(massDiffs),1)
+% 
+% figure;
+% plot(log(nVals),log(momentumDiffs))
+% title('log(Momentum Variation) vs. log(N)')
+% xlabel('log(N)')
+% ylabel('log(Momentum Variation)')
+% disp('log(Momentum Variation) vs. log(N) linear fit')
+% polyfit(log(nVals),log(momentumDiffs),1)
